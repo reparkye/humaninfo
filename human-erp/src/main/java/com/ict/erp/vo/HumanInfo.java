@@ -33,6 +33,13 @@ public class HumanInfo {
 		this.hiphone = hiphone;
 	}
 
+	@Override
+	public String toString() {
+		return "HumanInfo [hinum=" + hinum + ", hiid=" + hiid + ", hipwd=" + hipwd + ", hichpwd=" + hichpwd
+				+ ", hiname=" + hiname + ", hitrans=" + hitrans + ", hiaddress=" + hiaddress + ", hiemail=" + hiemail
+				+ ", hibirth=" + hibirth + ", hiphone=" + hiphone + "]";
+	}
+
 	public Integer getHinum() {
 		return hinum;
 	}
@@ -113,15 +120,6 @@ public class HumanInfo {
 		this.hiphone = hiphone;
 	}
 
-	@Override
-	public String toString() {
-		return "HumanInfo [hinum=" + hinum + ", hiid=" + hiid + ", hipwd=" + hipwd + ", hichpwd=" + hichpwd
-				+ ", hiname=" + hiname + ", hitrans=" + hitrans + ", hiaddress=" + hiaddress + ", hiemail=" + hiemail
-				+ ", hibirth=" + hibirth + ", hiphone=" + hiphone + "]";
-	}
-
-	
-	
 	
 	
 }

@@ -19,7 +19,7 @@ window.addEventListener('load',function(){
 					html += '</tr>';
 				}else{
 				for(var hi of res){
-					html += '<tr onclick="myview('+hi.hinum+')">';
+					html += '<tr onclick="myviews('+hi.hinum+')">';
 					html += '<td>'+hi.hinum+'</td>';
 					html += '<td>'+hi.hiid+'</td>';					
 					html += '<td>'+hi.hipwd+'</td>';
@@ -50,11 +50,11 @@ window.addEventListener('load',function(){
 
 <div style="float:right" class="search">
 <select id="type" name="type">
-	<option value="hinum">번호</option>
+	
 	<option value="hiid">아이디</option>
-	<option value="hiname">이름</option>
+	
 </select>
-  : <input type="text" id="keyword" name="keyword">  
+  : <input type="text" id="selkey" name="selkey">  
   <button onclick="searchList()">검색</button>
 </div>
 
@@ -82,11 +82,11 @@ window.addEventListener('load',function(){
 <script>
 function searchList(){
 	var type = document.querySelector('#type').value;
-	var keyword = document.querySelector('#keyword').value;
+	var selkey = document.querySelector('#selkey').value;
  
 	var params = {};
 	
-	params[type] = keyword;
+	params[type] = selkey;
 	
 	var getParams = '';
 	for(var key in params){
@@ -108,7 +108,7 @@ function searchList(){
 				html += '</tr>';
 			}else{
 				for(var hi of res){
-					html += '<tr onclick="myview('+hi.hinum+')">';
+					html += '<tr onclick="myviews('+hi.hinum+')">';
 					html += '<td>'+hi.hinum+'</td>';
 					html += '<td>'+hi.hiid+'</td>';					
 					html += '<td>'+hi.hipwd+'</td>';
@@ -130,7 +130,7 @@ function searchList(){
 	au.send();
 } 
 
-	function myview(hinum){
+	function myviews(hinum){
 		location.href="/humaninfo/"+hinum;
 	}
 

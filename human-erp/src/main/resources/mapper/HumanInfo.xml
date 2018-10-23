@@ -5,13 +5,9 @@
 <mapper namespace="SQL.HUMANINFO">
 	<select id="selectHumanInfoList" resultType="hi">
 	select * from human_info
-	<where>
-		<if test="hiId!=null">and hiId like '%'||#{hiId}||'%'</if>
-	</where>
-	order by hiNum
-	</select>
+	</select> 
 	
-	<select id="selectHumanInfo" resultType="hi">
+	<!-- <select id="selectHumanInfo" resultType="hi">
 		select HINUM, HIID, HIPWD,
 		HIChPwd, HINAME, HITRANS,
 		HIADDRESS, HIEMAIL, HIPHONE,
@@ -42,6 +38,6 @@
 	<delete id="deleteHumanInfo" parameterType="Integer">
 		delete from	human_info
 		where hiNum = #{hiNum}
-	</delete>
+	</delete> -->
 	
 </mapper>
