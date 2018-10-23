@@ -20,13 +20,15 @@
 
       <form class="form-signin">
         <h2 class="form-signin-heading">sign in</h2>
-        <label for="inputEmail" class="sr-only">user ID</label>
+
+
+        <label for="inputEmail" class="sr-only">user ID~!!</label>
         <input type="text" id="inputEmail" class="form-control" placeholder="user ID" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
+        <label for="inputPassword" class="sr-only">Password~!!</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="remember-me"> Remember me   <br>
+            <input type="checkbox" value="remember-me">  아이디 체크   <br>
                If you don't have an Id? <a id="myBtn" href="#myModal" data-toggle="modal">  SignIn</a>
             
           </label>
@@ -103,7 +105,7 @@
 
 								<div class="form-group row">
                                     <label for="hiAddress" class="col-md-4 col-form-label text-md-right"><abbr
-                                                title="시,군,구,동 까지 입력해주세요.">User Address</abbr></label>
+                                                title="주소를 입력해주세요">User Address</abbr></label>
                                     <div class="col-md-6">
                                         <input type="text" id="hiAddress" class="form-control" name="hiAddress">
                                     </div>
@@ -185,6 +187,67 @@
 		var hiEmail=document.querySelector('#hiEmail').value;
 		var hiBirth=document.querySelector('#hiBirth').value;
 		var hiPhone=document.querySelector('#hiPhone').value;
+		
+	
+		var languageCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;	
+		
+		if(hiPwd.trim().length<7){
+			alert('비밀번호를 7자이상 입력해주세요.');
+			hiPwd="";
+			return false;
+		}
+		if(hiChPwd != hiPwd){
+			alert('비밀번호가 일치하지 않습니다.');
+			hiRPwd="";
+			return false;
+		}	
+			
+		if(languageCheck.test(hiEmail)){
+			alert('이메일을 한글 제외하고 입력해주세요.');
+			hiEmail="";
+			return false;
+		}
+		if(hiEmail.trim().length==0){
+			alert('이메일을 입력해주세요.');
+			hiEmail="";
+			return false;
+		}
+		var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+		if(exptext.test(hiEmail)==false){
+			alert("이메일 형식에 맞게 입력해주세요.");
+			hiEmail = "";		
+			return false;
+		}
+		
+		if(hiPhone.trim().length>13 || hiPhone.trim().length==0){
+			alert('연락처를 다시 입력해주세요.');
+			hiPhone="";
+			return false;
+		}
+
+		if(hiAddress.trim().length==0){
+			alert('주소를 입력해주세요.');
+			hiAddress="";
+			return false;
+		}
+		if(languageCheck.test(hiAddress)){		
+		}else{
+			alert('주소를 한글로 입력해주세요.');
+			hiAddress="";
+			return false;
+		}
+		if(hiDAddress.trim().length==0){
+			alert('상세주소를 입력해주세요.');
+			hiDAddress="";
+			return false;
+		}
+		if(languageCheck.test(hiDAddress)){		
+		}else{
+			alert('상세주소를 한글로 입력해주세요.');
+			hiDAddress="";
+			return false;
+		}
+
 		
 			
 		var params={hiId:hiId,hiPwd:hiPwd,hiChPwd:hiChPwd,hiName:hiName,hiTrans:hiTrans,

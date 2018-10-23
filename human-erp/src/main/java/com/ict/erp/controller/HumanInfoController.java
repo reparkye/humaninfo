@@ -2,6 +2,8 @@ package com.ict.erp.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -48,4 +50,26 @@ public class HumanInfoController {
 	public Integer deleteHumanInfo(@PathVariable Integer hiNum) {
 		return hs.deleteHumanInfo(hiNum);
 	}
+	
+	
+	//sign_in//    
+    @RequestMapping(value="/loginCk", method=RequestMethod.POST)
+    public String loginCk(HttpSession session,HumanInfo hi) {
+    	String returnURL = "";
+    	
+    	if(session.getAttribute("login") != null) {
+    		session.removeAttribute("login");
+    	}
+    	
+    	HumanInfo Info = hs.getLoginInfo(hi);
+    	
+    	if(Info != null) {
+    		session.setAttribute("login", Info);
+    		returnURL = "redirect:/url/list";
+    	}else {
+    		returnURL = "redirect:/url/sign_in";
+    	}
+    	return returnURL;
+    }
+	
 }
