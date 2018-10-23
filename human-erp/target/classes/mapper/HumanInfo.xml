@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SQL.HUMANINFO">
+	<select id="selectHumanInfoList" resultType="hi">
+	select * from human_info
+	<where>
+		<if test="hiId!=null">and hiId like '%'||#{hiId}||'%'</if>
+	</where>
+	order by hiNum
+	</select>
+	
+	<select id="selectHumanInfo" resultType="hi">
+		select HINUM, HIID, HIPWD,
+		HIChPwd, HINAME, HITRANS,
+		HIADDRESS, HIEMAIL, HIPHONE,
+		TO_CHAR(to_date(hibirth,'YYYY-MM-DD'),'YYYY-MM-DD') AS HIBIRTH
+		from human_info
+		where hinum = #{hinum}
+	</select>
+	
+	<insert id="insertHumanInfo" parameterType="hi">
+		insert into human_info
+		values(seq_hiNum.nextval, #{hiId}, #{hiPwd}, #{hiChPwd}, #{hiName}, #{hiTrans}, #{hiAddress},
+		#{hiEmain}, #{hiPhone}, #{hiBirth})
+	</insert>	
+		
+	<update id="updateHumanInfo" parameterType="hi">
+		update human_info
+		<set>
+			<if test="hiPwd!=null">hiPwd = #{hiPwd},</if>
+			<if test="hiChPwd!=null">hiChPwd = #{hiChPwd},</if>
+			<if test="hiPhone!=null">hiPhone = #{hiPhone},</if>
+			<if test="hiEmail!=null">hiEmail = #{hiEmail},</if>
+			<if test="hiAddress!=null">hiAddress = #{hiAddress},</if>
+			<if test="hiName!=null">hiDesc = #{hiDesc},</if>						
+		</set>
+		where hiNum = #{hiNum}
+	</update>
+
+	<delete id="deleteHumanInfo" parameterType="Integer">
+		delete from	human_info
+		where hiNum = #{hiNum}
+	</delete>
+	
+</mapper>
