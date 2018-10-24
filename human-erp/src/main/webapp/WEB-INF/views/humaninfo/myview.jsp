@@ -176,16 +176,19 @@ function updateUserinfo(hiNum){
 	
 	
 	
-	var params={hiPwd:hiPwd,hiRPwd:hiRPwd,hiEmail:hiEmail,hiPhone:hiPhone,hiAddress:hiAddress,hiDAddress:hiDAddress,hiDesc:hiDesc,hiNum:hiNum}
+	
+	var params={hiid:hiid,hipwd:hipwd,hichpwd:hichpwd,hiname:hiname,hitrans:hitrans,
+			hiaddress:hiaddress,hiemail:hiemail,hibirth:hibirth,hiphone:hiphone,hinum:hinum}
+	
 	params=JSON.stringify(params);
 	
-	var conf={url:'/userinfo/'+hiNum,
+	var conf={url:'/humaninfo/'+hinum,
 			method:'PUT',
 			param:params,
 			success:function(res){
 					if(res=='1'){
 						alert('수정이 완료되었습니다.');
-						location.href='/url/userinfo:list';
+						location.href='/url/humaninfo:list';
 					}else{
 						error(res);
 					}
@@ -196,12 +199,12 @@ function updateUserinfo(hiNum){
 }
 
 function deleteUserinfo(hiNum){	
-	var conf={url:'/userinfo/'+hiNum,
+	var conf={url:'/humaninfo/'+hinum,
 			method:'DELETE',
 			success:function(res){
 			if(res=='1'){
 				alert("삭제 성공");
-				location.href='/url/userinfo:list';
+				location.href='/url/humaninfo:list';
 			}		  
 		}
 	

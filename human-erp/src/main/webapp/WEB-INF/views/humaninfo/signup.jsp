@@ -105,6 +105,14 @@
 
 </div>
 <script>
+
+/* String.prototype.replaceAll = function(str1,str2){
+	return this.split(str1).join(str2);
+}
+ */
+
+
+
 function signupOk(){	
 	var hiid=document.querySelector('#hiId').value;		
 	var hipwd=document.querySelector('#hiPwd').value;
@@ -169,12 +177,17 @@ function signupOk(){
 		alert('주소를 한글로 입력해주세요.');
 		hiaddress="";
 		return false;
+	}	
+		if(hibirth.trim().length==0){
+			alert('생년월일을 입력해주세요.');
+			hibirth="";
+			return false;
 	}
 	
 	
 				
 	var params={hiid:hiid,hipwd:hipwd,hichpwd:hichpwd,hiname:hiname,hitrans:hitrans,
-			hiaddress:hiaddress,hiemain:hiemail,hibirth:hibirth,hiphone:hiphone}
+			hiaddress:hiaddress,hiemail:hiemail,hibirth:hibirth,hiphone:hiphone}
 	
 	params=JSON.stringify(params);
 	

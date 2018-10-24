@@ -1,3 +1,17 @@
+/**
+ * author : Yoon
+ * desc: Util for Ajax object
+ * ex : 
+ * 	var au=new AjaxUtil({
+ * 	url: targetUrl,
+ * 	success: success function for success,
+ * 	error: success function for error,
+ * 	method: http method,
+ * 	type: callback response type(json,html,text)
+ * 	param: parameters for targetUrl
+ * }); 
+ */
+
 var AjaxUtil = function(conf){
 	var xhr=new XMLHttpRequest();
 	var url= conf.url;

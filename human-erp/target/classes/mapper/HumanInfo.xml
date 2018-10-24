@@ -10,6 +10,11 @@
 
 	<select id="selectHumanInfoList" resultType="hi">
 	select * from human_info
+		 <!-- <where>
+			<if test="hiId!=null">and hiid like '%'||#{hiid}||'%'</if>
+			<if test="hiName!=null">and hiname like '%'||#{hiname}||'%'</if>			
+		</where>
+		order by hinum  -->
 	</select> 
 	
 	 <select id="selectHumanInfo" resultType="hi">

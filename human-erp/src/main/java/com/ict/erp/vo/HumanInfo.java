@@ -13,13 +13,20 @@ public class HumanInfo {
 	private String hitrans;
 	private String hiaddress;
 	private String hiemail;
-	private Integer hibirth;
-	private Integer hiphone;
+	private String hibirth;
+	private String hiphone;
 	
 	public HumanInfo() {}
 
+	@Override
+	public String toString() {
+		return "HumanInfo [hinum=" + hinum + ", hiid=" + hiid + ", hipwd=" + hipwd + ", hichpwd=" + hichpwd
+				+ ", hiname=" + hiname + ", hitrans=" + hitrans + ", hiaddress=" + hiaddress + ", hiemail=" + hiemail
+				+ ", hibirth=" + hibirth + ", hiphone=" + hiphone + "]";
+	}
+
 	public HumanInfo(Integer hinum, String hiid, String hipwd, String hichpwd, String hiname, String hitrans,
-			String hiaddress, String hiemail, Integer hibirth, Integer hiphone) {
+			String hiaddress, String hiemail, String hibirth, String hiphone) {
 		super();
 		this.hinum = hinum;
 		this.hiid = hiid;
@@ -31,13 +38,6 @@ public class HumanInfo {
 		this.hiemail = hiemail;
 		this.hibirth = hibirth;
 		this.hiphone = hiphone;
-	}
-
-	@Override
-	public String toString() {
-		return "HumanInfo [hinum=" + hinum + ", hiid=" + hiid + ", hipwd=" + hipwd + ", hichpwd=" + hichpwd
-				+ ", hiname=" + hiname + ", hitrans=" + hitrans + ", hiaddress=" + hiaddress + ", hiemail=" + hiemail
-				+ ", hibirth=" + hibirth + ", hiphone=" + hiphone + "]";
 	}
 
 	public Integer getHinum() {
@@ -104,19 +104,19 @@ public class HumanInfo {
 		this.hiemail = hiemail;
 	}
 
-	public Integer getHibirth() {
+	public String getHibirth() {
 		return hibirth;
 	}
 
-	public void setHibirth(Integer hibirth) {
+	public void setHibirth(String hibirth) {
 		this.hibirth = hibirth;
 	}
 
-	public Integer getHiphone() {
+	public String getHiphone() {
 		return hiphone;
 	}
 
-	public void setHiphone(Integer hiphone) {
+	public void setHiphone(String hiphone) {
 		this.hiphone = hiphone;
 	}
 

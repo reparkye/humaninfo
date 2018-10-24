@@ -50,7 +50,8 @@ window.addEventListener('load',function(){
 
 <div style="float:right" class="search">
 <select id="type" name="type">
-	
+
+	<option value="hiname">이름</option>
 	<option value="hiid">아이디</option>
 	
 </select>
