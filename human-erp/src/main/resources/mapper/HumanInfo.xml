@@ -3,11 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="SQL.HUMANINFO">
+		
+		<select id="selectDate" resultType="map">
+			select to_char(sysdate, 'YY-MM-DD') from dual
+		</select>
+
 	<select id="selectHumanInfoList" resultType="hi">
 	select * from human_info
 	</select> 
 	
-	<!-- <select id="selectHumanInfo" resultType="hi">
+	 <select id="selectHumanInfo" resultType="hi">
 		select HINUM, HIID, HIPWD,
 		HIChPwd, HINAME, HITRANS,
 		HIADDRESS, HIEMAIL, HIPHONE,
@@ -38,6 +43,6 @@
 	<delete id="deleteHumanInfo" parameterType="Integer">
 		delete from	human_info
 		where hiNum = #{hiNum}
-	</delete> -->
+	</delete> 
 	
 </mapper>

@@ -52,7 +52,7 @@ public class HumanInfoController {
 	}
 	
 	
-	//sign_in//    
+	/*//sign_in//    
     @RequestMapping(value="/loginCk", method=RequestMethod.POST)
     public String loginCk(HttpSession session,HumanInfo hi) {
     	String returnURL = "";
@@ -71,5 +71,5 @@ public class HumanInfoController {
     	}
     	return returnURL;
     }
-	
+	*/
 }
