@@ -35,24 +35,24 @@ public class HumanInfoController {
 		return hs.selectHumanInfo(hiNum);
 	}
 	
-	@RequestMapping(value="/Humaninfo", method=RequestMethod.POST) 
+	@RequestMapping(value="/humaninfo", method=RequestMethod.POST) 
 	@ResponseBody
 	public Integer insertHumanInfo(@RequestBody HumanInfo hi) {
 		return hs.insertHumanInfo(hi);
 	}
-	@RequestMapping(value="/Humaninfo/{hiNum}", method=RequestMethod.PUT)
+	@RequestMapping(value="/humaninfo/{hiNum}", method=RequestMethod.PUT)
 	@ResponseBody
 	public Integer updateHumanInfo(@RequestBody HumanInfo hi, @PathVariable Integer hiNum) {
 		return hs.updateHumanInfo(hi);
 	}
-	@RequestMapping(value="/Humaninfo/{hiNum}", method=RequestMethod.DELETE)
+	@RequestMapping(value="/humaninfo/{hiNum}", method=RequestMethod.DELETE)
 	@ResponseBody
 	public Integer deleteHumanInfo(@PathVariable Integer hiNum) {
 		return hs.deleteHumanInfo(hiNum);
 	}
 	
 	
-	/*//sign_in//    
+	//sign_in//    
     @RequestMapping(value="/loginCk", method=RequestMethod.POST)
     public String loginCk(HttpSession session,HumanInfo hi) {
     	String returnURL = "";
@@ -61,7 +61,7 @@ public class HumanInfoController {
     		session.removeAttribute("login");
     	}
     	
-    	HumanInfo Info = hs.getLoginInfo(hi);
+    	HumanInfo Info = hs.getLogingInfo(hi);
     	
     	if(Info != null) {
     		session.setAttribute("login", Info);
@@ -71,5 +71,5 @@ public class HumanInfoController {
     	}
     	return returnURL;
     }
-	*/
+	
 }

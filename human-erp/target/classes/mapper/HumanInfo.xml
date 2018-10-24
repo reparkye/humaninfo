@@ -23,26 +23,30 @@
 	
 	<insert id="insertHumanInfo" parameterType="hi">
 		insert into human_info
-		values(seq_hiNum.nextval, #{hiId}, #{hiPwd}, #{hiChPwd}, #{hiName}, #{hiTrans}, #{hiAddress},
-		#{hiEmain}, #{hiPhone}, #{hiBirth})
+		values(seq_hiNum.nextval, #{hiid}, #{hipwd}, #{hichpwd}, #{hiname}, #{hitrans}, #{hiaddress},
+		#{hiemail}, #{hiphone}, #{hibirth})
 	</insert>	
 		
 	<update id="updateHumanInfo" parameterType="hi">
 		update human_info
 		<set>
-			<if test="hiPwd!=null">hiPwd = #{hiPwd},</if>
-			<if test="hiChPwd!=null">hiChPwd = #{hiChPwd},</if>
-			<if test="hiPhone!=null">hiPhone = #{hiPhone},</if>
-			<if test="hiEmail!=null">hiEmail = #{hiEmail},</if>
-			<if test="hiAddress!=null">hiAddress = #{hiAddress},</if>
-			<if test="hiName!=null">hiDesc = #{hiDesc},</if>						
+			<if test="hiPwd!=null">hipwd = #{hipwd},</if>
+			<if test="hiChPwd!=null">hichpwd = #{hichpwd},</if>
+			<if test="hiPhone!=null">hiphone = #{hiphone},</if>
+			<if test="hiEmail!=null">hiemail = #{hiemail},</if>
+			<if test="hiAddress!=null">hiaddress = #{hiaddress},</if>
+			<if test="hiName!=null">hidesc = #{hidesc},</if>						
 		</set>
-		where hiNum = #{hiNum}
+		where hinum = #{hinum}
 	</update>
 
 	<delete id="deleteHumanInfo" parameterType="Integer">
 		delete from	human_info
-		where hiNum = #{hiNum}
+		where hinum = #{hinum}
 	</delete> 
 	
+	<select id="loginCk" resultType="hi">
+		select * from human_info
+		<where> hiid = #{hiid} and hipwd = #{hipwd} </where>
+	</select>
 </mapper>

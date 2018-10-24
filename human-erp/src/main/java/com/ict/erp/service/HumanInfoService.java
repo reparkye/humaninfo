@@ -11,4 +11,7 @@ public interface HumanInfoService {
 	public int insertHumanInfo(HumanInfo hi);
 	public int updateHumanInfo(HumanInfo hi);
 	public int deleteHumanInfo(Integer hiNum);
+	
+	public HumanInfo getLogingInfo(HumanInfo hi);
+	
 }

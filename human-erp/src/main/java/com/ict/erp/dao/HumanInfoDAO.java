@@ -13,4 +13,6 @@ public interface HumanInfoDAO {
 	public int updateHumanInfo(HumanInfo hi);
 	public int deleteHumanInfo(Integer hiNum);
 	
+	public HumanInfo getLogingInfo(HumanInfo hi);
+	
 }

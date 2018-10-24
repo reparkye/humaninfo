@@ -106,75 +106,75 @@
 </div>
 <script>
 function signupOk(){	
-	var hiId=document.querySelector('#hiId').value;		
-	var hiPwd=document.querySelector('#hiPwd').value;
-	var hiChPwd=document.querySelector('#hiChPwd').value;
-	var hiName=document.querySelector('#hiName').value;
-	var hiTrans=document.querySelector('input[name=hiTrans]:checked').value;
-	var hiAddress=document.querySelector('#hiAddress').value;
-	var hiEmail=document.querySelector('#hiEmail').value;
-	var hiBirth=document.querySelector('#hiBirth').value;
-	var hiPhone=document.querySelector('#hiPhone').value;
+	var hiid=document.querySelector('#hiId').value;		
+	var hipwd=document.querySelector('#hiPwd').value;
+	var hichpwd=document.querySelector('#hiChPwd').value;
+	var hiname=document.querySelector('#hiName').value;
+	var hitrans=document.querySelector('input[name=hiTrans]:checked').value;
+	var hiaddress=document.querySelector('#hiAddress').value;
+	var hiemail=document.querySelector('#hiEmail').value;
+	var hibirth=document.querySelector('#hiBirth').value;
+	var hiphone=document.querySelector('#hiPhone').value;
 	
 	var languageCk = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;	
 	
-	if(hiId.trim().length<6){
+	if(hiid.trim().length<6){
 		alert('아이디는 6자리 이상으로 입력해주세요');
-		hiId="";
+		hiid="";
 		return false;
 	}
 	
-	if(hiPwd.trim().length<7){
+	if(hipwd.trim().length<7){
 		alert('비밀번호를 7자이상 입력해주세요.');
-		hiPwd="";
+		hipwd="";
 		return false;
 	}
 	
-	if(hiChPwd != hiPwd){
+	if(hichpwd != hipwd){
 		alert('비밀번호가 일치하지않습니다.');
-		hiChPwd="";
+		hichpwd="";
 		return false;
 	}	
 		
-	if(languageCk.test(hiEmail)){
+	if(languageCk.test(hiemail)){
 		alert('이메일 입력란에는 한글은 제외해주세요.');
-		hiEmail="";
+		hiemail="";
 		return false;
 	}
-	if(hiEmail.trim().length==0){
+	if(hiemail.trim().length==0){
 		alert('이메일을 입력해주세요.');
-		hiEmail="";
+		hiemail="";
 		return false;
 	}
 	var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-	if(exptext.test(hiEmail)==false){
+	if(exptext.test(hiemail)==false){
 		alert("이메일 형식에 맞게 입력해주세요.");
-		hiEmail = "";		
+		hiemail = "";		
 		return false;
 	}
 	
-	if(hiPhone.trim().length>13 || hiPhone.trim().length==0){
+	if(hiphone.trim().length>13 || hiphone.trim().length==0){
 		alert('연락처 번호를 다시 입력해주세요.');
-		hiPhone="";
+		hiphone="";
 		return false;
 	}
 
-	if(hiAddress.trim().length==0){
+	if(hiaddress.trim().length==0){
 		alert('주소를 입력해주세요.');
-		hiAddress="";
+		hiaddress="";
 		return false;
 	}
-	if(languageCk.test(hiAddress)){		
+	if(languageCk.test(hiaddress)){		
 	}else{
 		alert('주소를 한글로 입력해주세요.');
-		hiAddress="";
+		hiaddress="";
 		return false;
 	}
 	
 	
 				
-	var params={hiId:hiId,hiPwd:hiPwd,hiChPwd:hiChPwd,hiName:hiName,hiTrans:hiTrans,
-			hiAddress:hiAddress,hiEmain:hiEmail,hiBirth:hiBirth,hiPhone:hiPhone}
+	var params={hiid:hiid,hipwd:hipwd,hichpwd:hichpwd,hiname:hiname,hitrans:hitrans,
+			hiaddress:hiaddress,hiemain:hiemail,hibirth:hibirth,hiphone:hiphone}
 	
 	params=JSON.stringify(params);
 	

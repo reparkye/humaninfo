@@ -44,4 +44,10 @@ public class HumanInfoDAOImpl implements HumanInfoDAO{
 		return ss.delete("SQL.HUMANINFO.deleteHumanInfo",hiNum);
 	}
 
+	@Override
+	public HumanInfo getLogingInfo(HumanInfo hi) {
+		// TODO Auto-generated method stub
+		return ss.selectOne("SQL.HUMANINFO.loginCk",hi);
+	}
+
 }
