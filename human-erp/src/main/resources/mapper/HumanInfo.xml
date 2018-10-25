@@ -10,18 +10,18 @@
 
 	<select id="selectHumanInfoList" resultType="hi">
 	select * from human_info
-		 <!-- <where>
-			<if test="hiId!=null">and hiid like '%'||#{hiid}||'%'</if>
-			<if test="hiName!=null">and hiname like '%'||#{hiname}||'%'</if>			
+		  <where>
+			<if test="hiid!=null">and hiid like '%' ||#{hiid}|| '%'</if>
+			<if test="hiname!=null">and hiname like '%' ||#{hiname}|| '%'</if>			
 		</where>
-		order by hinum  -->
+		order by hinum  
 	</select> 
 	
 	 <select id="selectHumanInfo" resultType="hi">
-		select HINUM, HIID, HIPWD,
-		HIChPwd, HINAME, HITRANS,
-		HIADDRESS, HIEMAIL, HIPHONE,
-		TO_CHAR(to_date(hibirth,'YYYY-MM-DD'),'YYYY-MM-DD') AS HIBIRTH
+		select hinum, hiid, hipwd,
+		hichpwd, hiname, hitrans,
+		hiaddress, hiemail, hiphone,
+		<!-- TO_CHAR(to_date(hibirth,'YYYY-MM-DD'),'YYYY-MM-DD') AS --> hibirth
 		from human_info
 		where hinum = #{hinum}
 	</select>
@@ -35,12 +35,12 @@
 	<update id="updateHumanInfo" parameterType="hi">
 		update human_info
 		<set>
-			<if test="hiPwd!=null">hipwd = #{hipwd},</if>
-			<if test="hiChPwd!=null">hichpwd = #{hichpwd},</if>
-			<if test="hiPhone!=null">hiphone = #{hiphone},</if>
-			<if test="hiEmail!=null">hiemail = #{hiemail},</if>
-			<if test="hiAddress!=null">hiaddress = #{hiaddress},</if>
-			<if test="hiName!=null">hidesc = #{hidesc},</if>						
+			<if test="hipwd!=null">hipwd = #{hipwd},</if>
+			<if test="hichpwd!=null">hichpwd = #{hichpwd},</if>
+			<if test="hiphone!=null">hiphone = #{hiphone},</if>
+			<if test="hiemail!=null">hiemail = #{hiemail},</if>
+			<if test="hiaddress!=null">hiaddress = #{hiaddress},</if>
+			<if test="hiname!=null">hidesc = #{hidesc},</if>						
 		</set>
 		where hinum = #{hinum}
 	</update>
@@ -53,5 +53,18 @@
 	<select id="loginCk" resultType="hi">
 		select * from human_info
 		<where> hiid = #{hiid} and hipwd = #{hipwd} </where>
+	</select>
+	
+	
+	<!-- 아이디 중복체크 -->
+	<select id="idDuplChk" parameterType="hashmap" resultType="int">
+	SELECT
+		COUNT(*)AS CNT
+	FROM 
+		<if test="duplChk != null and duplChk != ''">
+	       	human_info
+	WHERE 1=1
+		AND hiid = #{hiid}
+		</if>	
 	</select>
 </mapper>

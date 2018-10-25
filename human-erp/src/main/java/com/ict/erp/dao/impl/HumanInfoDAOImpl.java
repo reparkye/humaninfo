@@ -1,6 +1,7 @@
 package com.ict.erp.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +50,6 @@ public class HumanInfoDAOImpl implements HumanInfoDAO{
 		// TODO Auto-generated method stub
 		return ss.selectOne("SQL.HUMANINFO.loginCk",hi);
 	}
+	
 
 }

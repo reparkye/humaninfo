@@ -19,7 +19,7 @@ window.addEventListener('load',function(){
 					html += '</tr>';
 				}else{
 				for(var hi of res){
-					html += '<tr onclick="myviews('+hi.hinum+')">';
+					html += '<tr onclick="myviewss('+hi.hinum+')">';
 					html += '<td>'+hi.hinum+'</td>';
 					html += '<td>'+hi.hiid+'</td>';					
 					html += '<td>'+hi.hipwd+'</td>';
@@ -109,7 +109,7 @@ function searchList(){
 				html += '</tr>';
 			}else{
 				for(var hi of res){
-					html += '<tr onclick="myviews('+hi.hinum+')">';
+					html += '<tr onclick="myviewss('+hi.hinum+')">';
 					html += '<td>'+hi.hinum+'</td>';
 					html += '<td>'+hi.hiid+'</td>';					
 					html += '<td>'+hi.hipwd+'</td>';
@@ -131,8 +131,9 @@ function searchList(){
 	au.send();
 } 
 
-	function myviews(hinum){
+	function myviewss(hinum){
 		location.href="/humaninfo/"+hinum;
+		
 	}
 
 </script>

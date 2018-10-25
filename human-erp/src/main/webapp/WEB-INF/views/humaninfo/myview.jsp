@@ -22,7 +22,7 @@
                                 <div class="form-group row">
                                     <label for="hiId" class="col-md-4 col-form-label text-md-right">User ID</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="hiId" class="form-control" name="hiId" value="${hi.hiId}" disabled>
+                                        <input type="text" id="hiId" class="form-control" name="hiId" value="${hi.hiid}" disabled>
                                     </div>
                                 </div>
 
@@ -43,25 +43,25 @@
                                 <div class="form-group row">
                                     <label for="hiName" class="col-md-4 col-form-label text-md-right">User Name</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="hiName" class="form-control" name="hiName" value="${hi.hiName}" disabled>
+                                        <input type="text" id="hiName" class="form-control" name="hiName" value="${hi.hiname}" disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="hiBir" class="col-md-4 col-form-label text-md-right">Date of Birth</label>
                                     <div class="col-md-6">
-                                        <input type="date" id="hiBir" class="form-control" name="hiBir" value="${hi.hiBir}" disabled>
+                                        <input type="date" id="hiBirth" class="form-control" name="hiBirth" value="${hi.hibirth}" disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="hiTran" class="col-md-4 col-form-label text-md-right">Gender</label>
+                                    <label for="hiTrans" class="col-md-4 col-form-label text-md-right">Gender</label>
                                     <div class="col-md-6">
                                     
-	                                    <input type="radio" class="" name="hiTran" id="male" value="male" ${hi.hiTran eq "male"?"checked":""} disabled>
+	                                    <input type="radio" class="" name="hiTrans" id="male" value="male" ${hi.hitrans eq "male"?"checked":""} disabled>
 										<label for="male">male</label>
 										
-										<input type="radio" class="" name="hiTran" id="female" value="female" ${hi.hiTran eq "female"?"checked":""} disabled>
+										<input type="radio" class="" name="hiTrans" id="female" value="female" ${hi.hitrans eq "female"?"checked":""} disabled>
 										<label for="female">female</label>
                                     </div>
                                 </div>    
@@ -69,14 +69,14 @@
                                 <div class="form-group row">
                                     <label for="hiEmail" class="col-md-4 col-form-label text-md-right">User Email</label>
                                     <div class="col-md-6">
-                                        <input type="email" id="hiEmail" class="form-control" name="hiEmail" value="${hi.hiEmail}" >
+                                        <input type="email" id="hiEmail" class="form-control" name="hiEmail" value="${hi.hiemail}" >
                                     </div>
                                 </div>   
                                 
                                  <div class="form-group row">
                                     <label for="hiPhone" class="col-md-4 col-form-label text-md-right">User Phone</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="hiPhone" class="form-control" name="hiPhone" value="${hi.hiPhone}" >
+                                        <input type="text" id="hiPhone" class="form-control" name="hiPhone" value="${hi.hiphone}" >
                                     </div>
                                 </div>                       
 
@@ -84,15 +84,15 @@
                                     <label for="hiAddress" class="col-md-4 col-form-label text-md-right"><abbr
                                                 title="주소를 입력해 주세요">User Address</abbr></label>
                                     <div class="col-md-6">
-                                        <input type="text" id="hiAddress" class="form-control" name="hiAddress" value="${hi.hiAddress}" >
+                                        <input type="text" id="hiAddress" class="form-control" name="hiAddress" value="${hi.hiaddress}" >
                                     </div>
                                 </div>
                                 
    
 
                                     <div class="col-md-6 offset-md-4">
-                                        <button class="btn btn-primary btn-block" onclick="updateUserinfo(${hi.hiNum})">수정</button>
-                                        <button class="btn btn-primary btn-block" onclick="deleteUserinfo(${hi.hiNum})">삭제</button>
+                                        <button class="btn btn-primary btn-block" onclick="updateUserinfo(${hi.hinum})">수정</button>
+                                        <button class="btn btn-primary btn-block" onclick="deleteUserinfo(${hi.hinum})">삭제</button>
                                     </div>
                                 </div>
                             <!-- </form> -->
@@ -106,79 +106,75 @@
 
 </div>
 <script>
-function updateUserinfo(hiNum){	
-	var hiPwd=document.querySelector('#hiPwd').value;
-	var hiRPwd=document.querySelector('#hiRPwd').value;
-	var hiEmail=document.querySelector('#hiEmail').value;
-	var hiPhone=document.querySelector('#hiPhone').value;
-	var hiAddress=document.querySelector('#hiAddress').value;
+function updateUserinfo(hinum){	
+	var hipwd=document.querySelector('#hiPwd').value;
+	var hichpwd=document.querySelector('#hichPwd').value;
+	var hiemail=document.querySelector('#hiEmail').value;
+	var hiphone=document.querySelector('#hiPhone').value;
+	var hiaddress=document.querySelector('#hiAddress').value;
 	
-	//--유효성검사 start--//	
-	var languageCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;	
 	
-	if(hiPwd.trim().length<5){
-		alert('비밀번호를 5자이상 입력해주세요.');
-		hiPwd="";
+
+	var languageCk = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;	
+	
+	
+	
+	if(hipwd.trim().length<7){
+		alert('비밀번호를 7자이상 입력해주세요.');
+		hipwd="";
 		return false;
 	}
-	if(hiRPwd != hiPwd){
-		alert('비밀번호를 다시 입력해주세요.');
-		hiRPwd="";
+	
+	if(hichpwd != hipwd){
+		alert('비밀번호가 일치하지않습니다.');
+		hichpwd="";
 		return false;
 	}	
 		
-	if(languageCheck.test(hiEmail)){
-		alert('이메일을 한글 제외하고 입력해주세요.');
-		hiEmail="";
+	if(languageCk.test(hiemail)){
+		alert('이메일 입력란에는 한글은 제외해주세요.');
+		hiemail="";
 		return false;
 	}
-	if(hiEmail.trim().length==0){
+	if(hiemail.trim().length==0){
 		alert('이메일을 입력해주세요.');
-		hiEmail="";
+		hiemail="";
 		return false;
 	}
 	var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
-	if(exptext.test(hiEmail)==false){
+	if(exptext.test(hiemail)==false){
 		alert("이메일 형식에 맞게 입력해주세요.");
-		hiEmail = "";		
+		hiemail = "";		
 		return false;
 	}
 	
-	if(hiPhone.trim().length>13 || hiPhone.trim().length==0){
-		alert('연락처를 다시 입력해주세요.');
-		hiPhone="";
+	if(hiphone.trim().length>13 || hiphone.trim().length==0){
+		alert('연락처 번호를 다시 입력해주세요.');
+		hiphone="";
 		return false;
 	}
 
-	if(hiAddress.trim().length==0){
+	if(hiaddress.trim().length==0){
 		alert('주소를 입력해주세요.');
-		hiAddress="";
+		hiaddress="";
 		return false;
 	}
-	if(languageCheck.test(hiAddress)){		
+	if(languageCk.test(hiaddress)){		
 	}else{
 		alert('주소를 한글로 입력해주세요.');
-		hiAddress="";
+		hiaddress="";
 		return false;
-	}
-	if(hiDAddress.trim().length==0){
-		alert('상세주소를 입력해주세요.');
-		hiDAddress="";
-		return false;
-	}
-	if(languageCheck.test(hiDAddress)){		
-	}else{
-		alert('상세주소를 한글로 입력해주세요.');
-		hiDAddress="";
-		return false;
-	}
-	//--유효성 검사end--//
+	}	
 	
 	
 	
 	
-	var params={hiid:hiid,hipwd:hipwd,hichpwd:hichpwd,hiname:hiname,hitrans:hitrans,
-			hiaddress:hiaddress,hiemail:hiemail,hibirth:hibirth,hiphone:hiphone,hinum:hinum}
+	
+	var params={hipwd:hipwd,
+			hichpwd:hichpwd,
+			hiaddress:hiaddress,
+			hiemail:hiemail,
+			hinum:hinum}
 	
 	params=JSON.stringify(params);
 	
@@ -198,7 +194,7 @@ function updateUserinfo(hiNum){
 	au.send();
 }
 
-function deleteUserinfo(hiNum){	
+function deleteUserinfo(hinum){	
 	var conf={url:'/humaninfo/'+hinum,
 			method:'DELETE',
 			success:function(res){

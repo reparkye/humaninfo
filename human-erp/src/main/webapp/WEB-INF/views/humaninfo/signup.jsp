@@ -22,10 +22,10 @@
                                 <div class="form-group row">
                                     <label for="hiId" class="col-md-4 col-form-label text-md-right">ID</label>
                                     <div class="col-md-6">
-                                        <input type="text" id="hiId" class="form-control" name="hiId" placeholder="사용하실 아이디 입력">
+                                        <input type="text" id="hiId" class="form-control" name="hiId" placeholder="사용하실 아이디 입력">  <input type="hidden" id="duplChk" name="duplChk"> <button class="sr_id" type="button" onclick="fn_idDuplChk('admin')">중복확인</button>
                                     </div>
                                 </div>
-
+          
                                 <div class="form-group row">
                                     <label for="hiPwd" class="col-md-4 col-form-label text-md-right">비밀번호</label>
                                     <div class="col-md-6">
@@ -124,6 +124,45 @@ function signupOk(){
 	var hibirth=document.querySelector('#hiBirth').value;
 	var hiphone=document.querySelector('#hiPhone').value;
 	
+	
+	var idDupChk = "";
+	/* 아이디 중복확인 */
+	function fn_idDuplChk(data) {
+		 if(data == 'admin'){
+			 if($("#a_id").val() == '' || $("#a_id").val() == null){
+		    		alert('중복체크할 아이디를 입력하세요');	    		
+		    		return;	    		
+		    }		
+			 document.form.duplChk.value="admin";
+		 }
+		var formData = new FormData(document.form);	
+		$.ajax({
+			type: 'POST',
+			data: formData,
+			url: "<c:url value='/admin/idDuplChk.do'/>",
+			dataType :'json',
+			processData: false,
+			contentType: false,
+			success: function(data){
+				//alert(data.result);
+				if(data.result === 'available_id'){					
+					alert("사용 가능한 아이디 입니다.");
+					idDupChk = "Y";
+				}
+				else if(data.result === 'unavailable_id'){
+					alert("이미 사용중인 아이디입니다.");
+					$("#a_id").val('');
+					idDupChk = "";
+				}
+			},
+		    error: function (xhr, ajaxOptions, thrownError) {}
+		});
+	}
+
+
+	
+	
+	
 	var languageCk = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;	
 	
 	if(hiid.trim().length<6){
@@ -197,7 +236,7 @@ function signupOk(){
 			success:function(res){
 					if(res=='1'){
 						alert('회원가입이 완료되었습니다.');
-						location.href='home';
+						location.href='/url/humaninfo:list';
 					}else{
 						error(res);
 					}

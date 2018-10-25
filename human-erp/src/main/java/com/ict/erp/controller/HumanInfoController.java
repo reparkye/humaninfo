@@ -1,9 +1,13 @@
 package com.ict.erp.controller;
 
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.exception.DataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,7 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ict.erp.service.HumanInfoService;
 import com.ict.erp.vo.HumanInfo;
@@ -29,10 +35,10 @@ public class HumanInfoController {
 		return hs.selectHumanInfoList(hi);
 	}
 	
-	@RequestMapping(value="/humaninfo/{hiNum}",method=RequestMethod.GET)
-	@ResponseBody
-	public HumanInfo selectHumanInfo(@PathVariable Integer hiNum) {
-		return hs.selectHumanInfo(hiNum);
+	//view 이동해주는 소스
+	@RequestMapping(value="/humaninfo/{hiNum}", method=RequestMethod.GET)
+	public ModelAndView selectUserInfo(@PathVariable Integer hiNum) {
+		return new ModelAndView("humaninfo/myview","hi",hs.selectHumanInfo(hiNum));
 	}
 	
 	@RequestMapping(value="/humaninfo", method=RequestMethod.POST) 
@@ -51,7 +57,8 @@ public class HumanInfoController {
 		return hs.deleteHumanInfo(hiNum);
 	}
 	
-	
+    
+    
 	//sign_in//    
     @RequestMapping(value="/loginCk", method=RequestMethod.POST)
     public String loginCk(HttpSession session,HumanInfo hi) {
@@ -70,6 +77,8 @@ public class HumanInfoController {
     		returnURL = "redirect:/url/sign_in";
     	}
     	return returnURL;
-    }
+    } 
+   
+    
 	
 }
