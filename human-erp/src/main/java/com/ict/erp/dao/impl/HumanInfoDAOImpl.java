@@ -51,6 +51,7 @@ public class HumanInfoDAOImpl implements HumanInfoDAO{
 		return ss.selectOne("SQL.HUMANINFO.loginCk",hi);
 	}
 
+	//아이디 중복체크
 	@Override
 	public int CkeckDuplication(String hiid) {
 		// TODO Auto-generated method stub

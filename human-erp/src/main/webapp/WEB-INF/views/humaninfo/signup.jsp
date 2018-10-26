@@ -10,8 +10,8 @@
 <meta charset="UTF-8">
 </head>
 
+	<!-- 아이디 중복 체크 -->
 <script>
-
 var isCheckId = 0;
 function duplicationId(){
    var hiid =  $("#hiId").val(); 
@@ -46,6 +46,7 @@ function duplicationId(){
        });
 }
 </script>
+
 
 <body>
 <div class="main">
@@ -165,7 +166,11 @@ function signupOk(){
 	
 	var languageCk = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;	
 	
-	if(isCheckId == 0) { alert("아이디 중복 체크를 해주세요."); $("#hiId").focus(); return; }
+	if(isCheckId == 0) { 
+		alert("아이디 중복 체크를 해주세요."); 
+		$("#hiId").focus(); 
+		return; 
+		}
 
 	
 	if(hiid.trim().length<6){

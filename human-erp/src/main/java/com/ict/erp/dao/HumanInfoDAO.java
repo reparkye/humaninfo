@@ -14,6 +14,6 @@ public interface HumanInfoDAO {
 	public int deleteHumanInfo(Integer hiNum);
 	
 	public HumanInfo getLogingInfo(HumanInfo hi);
-	//아이디 검사
+	//아이디 중복 검사
 	public int CkeckDuplication(String hiid);
 }
