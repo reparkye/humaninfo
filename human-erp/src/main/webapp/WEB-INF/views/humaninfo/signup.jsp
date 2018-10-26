@@ -9,6 +9,44 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 </head>
+
+<script>
+
+var isCheckId = 0;
+function duplicationId(){
+   var hiid =  $("#hiId").val(); 
+   
+   $.ajax({
+       async: false,
+       type : "POST",
+       url : "/idckeck",
+       data : 'hiid=' + hiid,
+       success:function (data){
+    		if(data == "0"){
+    			alert("사용가능한 아이디 입니다.");
+    			
+    			$("#divInputId").addClass("has-success")
+    			$("#divInputId").removeClass("has-error")
+    			
+    			$("#hiPwd").focus();
+				isCheckId = 1;
+    		
+    		} else if(data == '1') {
+    			alert("아이디가 존재합니다 다른아이디 입력 바랍니다.");
+    			
+    			$("divInputId").addClass("has-error")
+    			$("divInputId").removeClass("has-success")
+    			
+    			$("#hiId").focus();
+    		}
+       },
+   		error: function(req, status, errThrown){
+   			alert("network erro");
+   		}
+       });
+}
+</script>
+
 <body>
 <div class="main">
 <h2>Sign Up(회원가입 창)</h2>
@@ -21,8 +59,12 @@
                         <div class="card-body">
                                 <div class="form-group row">
                                     <label for="hiId" class="col-md-4 col-form-label text-md-right">ID</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="hiId" class="form-control" name="hiId" placeholder="사용하실 아이디 입력">  <input type="hidden" id="duplChk" name="duplChk"> <button class="sr_id" type="button" onclick="fn_idDuplChk('admin')">중복확인</button>
+                                    <div class="col-md-6" id="divInputId">
+                                        <input type="text" id="hiId" class="form-control" name="hiId" placeholder="사용하실 아이디 입력">  
+                                        
+                                        	<!-- 중복체크 -->																		
+                                        <input type="button" class="btn btn-default" style="width:30%;" value="중복체크" onclick="duplicationId()"/>   
+                                    
                                     </div>
                                 </div>
           
@@ -106,11 +148,6 @@
 </div>
 <script>
 
-/* String.prototype.replaceAll = function(str1,str2){
-	return this.split(str1).join(str2);
-}
- */
-
 
 
 function signupOk(){	
@@ -125,45 +162,11 @@ function signupOk(){
 	var hiphone=document.querySelector('#hiPhone').value;
 	
 	
-	var idDupChk = "";
-	/* 아이디 중복확인 */
-	function fn_idDuplChk(data) {
-		 if(data == 'admin'){
-			 if($("#a_id").val() == '' || $("#a_id").val() == null){
-		    		alert('중복체크할 아이디를 입력하세요');	    		
-		    		return;	    		
-		    }		
-			 document.form.duplChk.value="admin";
-		 }
-		var formData = new FormData(document.form);	
-		$.ajax({
-			type: 'POST',
-			data: formData,
-			url: "<c:url value='/admin/idDuplChk.do'/>",
-			dataType :'json',
-			processData: false,
-			contentType: false,
-			success: function(data){
-				//alert(data.result);
-				if(data.result === 'available_id'){					
-					alert("사용 가능한 아이디 입니다.");
-					idDupChk = "Y";
-				}
-				else if(data.result === 'unavailable_id'){
-					alert("이미 사용중인 아이디입니다.");
-					$("#a_id").val('');
-					idDupChk = "";
-				}
-			},
-		    error: function (xhr, ajaxOptions, thrownError) {}
-		});
-	}
-
-
-	
-	
 	
 	var languageCk = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;	
+	
+	if(isCheckId == 0) { alert("아이디 중복 체크를 해주세요."); $("#hiId").focus(); return; }
+
 	
 	if(hiid.trim().length<6){
 		alert('아이디는 6자리 이상으로 입력해주세요');

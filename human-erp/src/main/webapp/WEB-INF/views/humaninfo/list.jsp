@@ -70,8 +70,8 @@ window.addEventListener('load',function(){
 			<th>성별</th>
 			<th>주소</th>
 			<th>메일</th>
+			<th>핸드폰~</th>
 			<th>생일</th>
-			<th>핸드폰</th>
 		</tr>
 	</thead>
 	<tbody id="humanlistTbody">

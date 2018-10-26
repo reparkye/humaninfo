@@ -50,6 +50,12 @@ public class HumanInfoDAOImpl implements HumanInfoDAO{
 		// TODO Auto-generated method stub
 		return ss.selectOne("SQL.HUMANINFO.loginCk",hi);
 	}
+
+	@Override
+	public int CkeckDuplication(String hiid) {
+		// TODO Auto-generated method stub
+		return ss.selectOne("SQL.HUMANINFO.idcheck",hiid);
+	}
 	
 
 }

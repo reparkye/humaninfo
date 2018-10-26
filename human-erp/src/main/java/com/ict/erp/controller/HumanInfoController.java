@@ -57,8 +57,13 @@ public class HumanInfoController {
 		return hs.deleteHumanInfo(hiNum);
 	}
 	
-    
-    
+    //아이디 중복 체크
+    @RequestMapping(value="/idckeck", method=RequestMethod.POST)
+	@ResponseBody
+	public Integer CheckDuplication(@RequestParam("hiid") String hiid) {
+      	return hs.CheckDuplication(hiid); 
+    }
+	
 	//sign_in//    
     @RequestMapping(value="/loginCk", method=RequestMethod.POST)
     public String loginCk(HttpSession session,HumanInfo hi) {
@@ -80,5 +85,6 @@ public class HumanInfoController {
     } 
    
     
+   
 	
 }

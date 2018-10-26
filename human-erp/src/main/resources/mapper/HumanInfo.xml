@@ -57,14 +57,11 @@
 	
 	
 	<!-- 아이디 중복체크 -->
-	<select id="idDuplChk" parameterType="hashmap" resultType="int">
-	SELECT
-		COUNT(*)AS CNT
-	FROM 
-		<if test="duplChk != null and duplChk != ''">
-	       	human_info
-	WHERE 1=1
-		AND hiid = #{hiid}
-		</if>	
-	</select>
+	<select id="idcheck" parameterType="String" resultType="Integer">
+      select count(*) from human_info
+      where hiid = #{hiid}
+</select>
+	
+	
+	
 </mapper>

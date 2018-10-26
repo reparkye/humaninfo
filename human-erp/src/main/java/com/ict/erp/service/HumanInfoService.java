@@ -14,6 +14,7 @@ public interface HumanInfoService {
 	public int deleteHumanInfo(Integer hiNum);
 	
 	public HumanInfo getLogingInfo(HumanInfo hi);	
-
+	//중복체크
+	public int CheckDuplication(String hiid);
 
 }
