@@ -79,8 +79,10 @@ public class HumanInfoController {
     	
     	if(hInfo != null) {
     		session.setAttribute("login", hInfo);
+    		System.out.println("로그인 ㅇㅋ");
     		returnURL = "redirect:/url/humaninfo:list";
     	}else {
+    		System.out.println("로그인 실패 아이디나 비밀번호 확인해주세요");
     		returnURL = "redirect:/url/humaninfo:sign_in";
     	}
     	return returnURL;

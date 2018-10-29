@@ -173,11 +173,12 @@ function signupOk(){
 		}
 
 	
-	if(hiid.trim().length<6){
+	 if(hiid.trim().length<6){
 		alert('아이디는 6자리 이상으로 입력해주세요');
 		hiid="";
 		return false;
-	}
+	} 
+	
 	
 	if(hipwd.trim().length<7){
 		alert('비밀번호를 7자이상 입력해주세요.');
