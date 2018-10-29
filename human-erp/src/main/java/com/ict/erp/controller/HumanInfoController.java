@@ -64,22 +64,24 @@ public class HumanInfoController {
       	return hs.CheckDuplication(hiid); 
     }
 	
-	//sign_in//    
-    @RequestMapping(value="/loginCk", method=RequestMethod.POST)
-    public String loginCk(HttpSession session,HumanInfo hi) {
+    //로그인
+    @RequestMapping(value="/loginCke", method=RequestMethod.POST)
+    public String getLogingInfo(HttpSession session, HumanInfo hi) {
     	String returnURL = "";
     	
     	if(session.getAttribute("login") != null) {
     		session.removeAttribute("login");
     	}
     	
-    	HumanInfo Info = hs.getLogingInfo(hi);
+    	System.out.println(hi);			/*컨트롤러 값이 널로 가는걸 확인*/
     	
-    	if(Info != null) {
-    		session.setAttribute("login", Info);
-    		returnURL = "redirect:/url/list";
+    	HumanInfo hInfo = hs.getLogingInfo(hi);
+    	
+    	if(hInfo != null) {
+    		session.setAttribute("login", hInfo);
+    		returnURL = "redirect:/url/humaninfo:list";
     	}else {
-    		returnURL = "redirect:/url/sign_in";
+    		returnURL = "redirect:/url/humaninfo:sign_in";
     	}
     	return returnURL;
     } 

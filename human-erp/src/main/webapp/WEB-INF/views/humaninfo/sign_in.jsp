@@ -24,15 +24,18 @@
         <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><span class="tx-normal">[</span> User Interface <span class="tx-normal">]</span></div>
         <div class="tx-center mg-b-60">여행 정보 로그인 창</div>
         
-		<form action="/loginCk" method="POST">
+        
+		<form action="/loginCke" method="POST">
         
         <div class="form-group">
-          <input type="text" name="hiId" class="form-control" placeholder="Enter your ID">
+          <input type="text" name="hiid" class="form-control" placeholder="아이디를 입력해주세요">
         </div>
+        
         <div class="form-group">
-          <input type="password" name="hiPwd" class="form-control" placeholder="Enter your Password">
+          <input type="password" name="hipwd" class="form-control" placeholder="비밀번호를 입력해주세요">
         </div>
-        <button class="btn btn-info btn-block">로그인</button>
+        
+        <button class="btn btn-info btn-block">로그인</button>	<!-- 컨트롤러 가는 값이 널로 나옴 -->
 </form>
         <div class="mg-t-60 tx-center">가입 하시겠습니까? <a href="/url/humaninfo:signup" class="tx-info">회원가입</a></div>
       </div>

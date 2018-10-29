@@ -44,7 +44,8 @@ public class HumanServiceDAOImpl implements HumanInfoService{
 		// TODO Auto-generated method stub
 		return hdao.deleteHumanInfo(hiNum);
 	}
-
+	
+	//로그인
 	@Override
 	public HumanInfo getLogingInfo(HumanInfo hi) {
 		// TODO Auto-generated method stub

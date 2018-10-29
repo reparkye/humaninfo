@@ -44,20 +44,12 @@ window.addEventListener('load',function(){
 </script>
 
 <body>
+							${login.hiname}(${login.hiid})님 환영합니다 
 <div class="main">
 
 <div class="container">
 
-<div style="float:right" class="search">
-<select id="type" name="type">
 
-	<option value="hiname">이름</option>
-	<option value="hiid">아이디</option>
-	
-</select>
-  : <input type="text" id="selkey" name="selkey">  
-  <button onclick="searchList()">검색</button>
-</div>
 
 <table border="1">
 	<thead>
@@ -77,6 +69,18 @@ window.addEventListener('load',function(){
 	<tbody id="humanlistTbody">
 	</tbody>
 </table>
+
+<div style="float:right" class="search">
+<select id="type" name="type">
+
+	<option value="hiname">이름</option>
+	<option value="hiid">아이디</option>
+	
+</select>
+  <input type="text" id="selkey" name="selkey">  
+  <button onclick="searchList()">검색</button>
+</div>
+
 </div>
 </div>
 

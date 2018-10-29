@@ -45,12 +45,13 @@ public class HumanInfoDAOImpl implements HumanInfoDAO{
 		return ss.delete("SQL.HUMANINFO.deleteHumanInfo",hiNum);
 	}
 
+	//로그인
 	@Override
 	public HumanInfo getLogingInfo(HumanInfo hi) {
-		// TODO Auto-generated method stub
-		return ss.selectOne("SQL.HUMANINFO.loginCk",hi);
+		return ss.selectOne("SQL.HUMANINFO.loginCk", hi);
 	}
-
+	
+	
 	//아이디 중복체크
 	@Override
 	public int CkeckDuplication(String hiid) {
